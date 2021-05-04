@@ -82,3 +82,32 @@ a, button, input, select {
 	margin-top: 20px;
 	padding: 10px;
 }
+
+#connection {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;
+	padding: 5px;
+	text-transform: uppercase;
+	background-color: rgba(0, 0, 0, 0.3);
+	/*font-size: 1.4rem;*/
+	text-rendering: optimizeLegibility;
+
+	font-family: monospace;
+}
+
+#data {
+	position: absolute;
+  top: 4em;
+  left: 0px;
+  z-index: 1;
+	padding: 5px;
+	
+	white-space: pre;
+	background-color: #111;
+	/*font-size: 1.4rem;*/
+	text-rendering: optimizeLegibility;
+
+	font-family: monospace;
+}

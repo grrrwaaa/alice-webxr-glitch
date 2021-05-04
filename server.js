@@ -28,6 +28,10 @@ var msg;
 
 wss.on('connection', function connection(ws) 
 {
+  ws.on('close', function () {
+		console.log("disconnected")
+	})
+  
   ws.on('message', function incoming(message) 
   {
     msg = message;
@@ -41,7 +45,7 @@ wss.on('connection', function connection(ws)
     });
   });
 
-  ws.send('hello from server');
+  ws.send('Chat room is working!');
 });
 
 server.listen(3000, function(){

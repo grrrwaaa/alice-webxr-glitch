@@ -4,10 +4,12 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node localserver.js"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "express-http-proxy": "^1.6.2",
+    "ngrok": "^4.0.1",
     "ws": "^7.4.5"
   },
   "engines": {
