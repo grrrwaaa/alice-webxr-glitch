@@ -41,7 +41,7 @@ wss.on('connection', function connection(ws)
     });
   });
 
-  ws.send('Chat room is working!');
+  ws.send('hello from server');
 });
 
 server.listen(3000, function(){
