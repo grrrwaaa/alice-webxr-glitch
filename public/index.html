@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>three.js examples</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="shortcut icon" href="../files/favicon.ico" />
+<style>
+
+* { 
+	box-sizing: border-box;
+}
+html, body {
+	margin: 0px;
+	padding: 0px;
+	min-height: 100%;
+	background: #fff;
+	color: #000;
+
+	/*font-size: 1.4rem;*/
+	text-rendering: optimizeLegibility;
+
+	font-family: monospace;
+}
+
+textarea { 
+	min-height: 1em; 
+	width:100%; max-width: 100%; 
+	font-family: monospace;
+}
+
+#connection {
+	margin: 5px;
+	text-transform: uppercase;
+	background-color: #ddd;
+}
+
+#data {
+	margin: 5px;
+	white-space: pre;
+	background-color: #eee;
+}
+
+</style>
+</head>
+<body>
+<div id="connection">Connection status</div>
+<div id="data">data</div>
+<script>
+  
+let port = window.location.port
+let socket
+let connection_div = document.getElementById("connection")
+const socketpath = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.hostname}:${port}/`
+
+function connect() {
+	if (socket) return;
+
+	socket = new WebSocket(socketpath);
+	connection_div.innerText = `connecting to ${socketpath}`
+	socket.binaryType = "arraybuffer";
+
+	reconnect = function() {
+		connection_div.innerText = ("will reconnect")
+		setTimeout(connect, 1000)
+	}
+
+	socket.onerror = function(event, err) {
+		connection_div.innerText = `connection error ${event} ${socket.readyState}`
+		console.error("WebSocket error observed:", event, socket.readyState);
+		socket = null
+		reconnect();
+	}
+
+	socket.onopen = () => {
+		connection_div.innerText = `connected to ${socketpath}`
+
+		socket.onclose = function(event) {
+			console.log("WebSocket is closed now.");
+			connection_div.innerText = "disconnected"
+			socket = null
+			reconnect();
+		}
+
+		//socket.send('Here\'s some text that the server is urgently awaiting!'); 
+		socket.onmessage = event => {
+      console.log(event.data)
+// 			//if(event.data instanceof ArrayBuffer) {
+// 			let msg = JSON.parse(event.data)
+// 			if (msg.cmd == "setcode") {
+// 				//console.log("setcode", msg.code)
+
+// 				editor.setValue(msg.code)
+// 				editor_dirty = false;
+// 			} else if (msg.cmd == "setstate") {
+// 				data.innerText = JSON.stringify(msg.state, null, "  ")
+// 			} else {
+// 				console.log(`Received message ${msg}`);
+// 			}
+		}
+
+		// request current code:
+		socket.send(`{"cmd":"getcode"}`)
+	}
+}
+connect();
+</script>
+
+
+</body>
+</html>
