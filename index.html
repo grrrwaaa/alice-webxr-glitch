@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>three.js examples</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<style>
+	body {
+	margin: 0;
+	background-color: #000;
+	color: #fff;
+	font-family: Monospace;
+	font-size: 13px;
+	line-height: 24px;
+	overscroll-behavior: none;
+}
+
+a {
+	color: #ff0;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+button {
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+#info {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	z-index: 1; /* TODO Solve this in HTML */
+}
+
+a, button, input, select {
+	pointer-events: auto;
+}
+
+.dg.ac {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	z-index: 2 !important; /* TODO Solve this in HTML */
+}
+
+#overlay {
+	position: absolute;
+	font-size: 16px;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background: rgba(0,0,0,0.7);
+}
+
+	#overlay button {
+		background: transparent;
+		border: 0;
+		border: 1px solid rgb(255, 255, 255);
+		border-radius: 4px;
+		color: #ffffff;
+		padding: 12px 18px;
+		text-transform: uppercase;
+		cursor: pointer;
+	}
+
+#notSupported {
+	width: 50%;
+	margin: auto;
+	background-color: #f00;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+#connection {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;
+	padding: 5px;
+	text-transform: uppercase;
+	background-color: #222;
+	/*font-size: 1.4rem;*/
+	text-rendering: optimizeLegibility;
+
+	font-family: monospace;
+}
+
+#data {
+	position: absolute;
+  top: 4em;
+  left: 0px;
+  z-index: 1;
+	padding: 5px;
+	
+	white-space: pre;
+	background-color: #111;
+	/*font-size: 1.4rem;*/
+	text-rendering: optimizeLegibility;
+
+	font-family: monospace;
+}
+</style>
+</head>
+<body>
+	
+
+	<iframe
+	  src="https://glitch.com/embed/#!/embed/fanatical-linen-toy?path=.env&previewSize=0&attributionHidden=true"
+	  title="fanatical-linen-toy on Glitch"
+	  allow="geolocation; microphone; camera; midi; vr; encrypted-media; pointer-lock"
+	  style="height: 100%; width: 100%; border: 0;">
+	</iframe>
+
+	
+</body></html>	
